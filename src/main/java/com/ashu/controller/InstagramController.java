@@ -7,20 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Properties;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 @Controller
 @RequestMapping("/instaurl")
 public class InstagramController {
 
-    private static final String CONFIG_FILE = "F:\\videos\\AutomateRoop\\config.properties";
+//    private static final String CONFIG_FILE = "config.properties";
 
     @GetMapping
     public ModelAndView showInstagramPage() {
@@ -73,7 +69,8 @@ public class InstagramController {
     private String buildCurlCommand(String postId) {
         Properties properties = new Properties();
 
-        try (FileInputStream input = new FileInputStream(CONFIG_FILE)) {
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
+        ) {
             properties.load(input);
         } catch (IOException e) {
             e.printStackTrace();

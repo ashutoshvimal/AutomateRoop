@@ -39,4 +39,4 @@ build/
 .DS_Store
 
 ### Property file ###
-config.properties
+src/main/resources/config.properties
