@@ -11,7 +11,7 @@ WORKDIR /usr/local/tomcat/webapps
 COPY target/project2.war /usr/local/tomcat/webapps/app.war
 
 # Copy the config.properties file into the container at /usr/local/tomcat/conf
-COPY config.properties /usr/local/tomcat/conf/config.properties
+# COPY config.properties /usr/local/tomcat/conf/config.properties
 
 # Expose the port that your application will run on
 EXPOSE 8080

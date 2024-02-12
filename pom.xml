@@ -68,6 +68,8 @@
       </resource>
     </resources>
 
+    <finalName>project2</finalName>
+
   </build>
 
 </project>
