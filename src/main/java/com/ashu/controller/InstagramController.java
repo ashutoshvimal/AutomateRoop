@@ -1,12 +1,8 @@
 package com.ashu.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,6 +10,7 @@ import java.util.Properties;
 
 @Controller
 @RequestMapping("/instaurl")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class InstagramController {
 
 //    private static final String CONFIG_FILE = "config.properties";
@@ -25,7 +22,7 @@ public class InstagramController {
 
     @PostMapping("/processUrl")
     public String processInstagramUrl(@RequestParam String instagramUrl) {
-        System.out.println("in controller");
+//        System.out.println("in controller");
         String postId = extractPostId(instagramUrl);
 
         // Build and execute curl command
@@ -55,13 +52,13 @@ public class InstagramController {
         // Extract postId based on the matched pattern
         String postId = "";
         if (matcher1.find()) {
-            System.out.println(matcher1.group(1));
+//            System.out.println(matcher1.group(1));
             postId = matcher1.group(1);
         } else if (matcher2.find()) {
-            System.out.println(matcher2.group(1));
+//            System.out.println(matcher2.group(1));
             postId = matcher2.group(1);
         }
-        System.out.println(postId);
+//        System.out.println(postId);
         // Return an empty string if the URL doesn't match either pattern
         return postId;
     }
