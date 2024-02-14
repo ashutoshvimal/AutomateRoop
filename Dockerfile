@@ -8,7 +8,7 @@ WORKDIR /usr/local/tomcat/webapps
 COPY target/AutomateRoop.war /usr/local/tomcat/webapps/app.war
 
 # Install curl in the final image
-RUN apt-get update && apt-get install -y curl
+# RUN apt-get update && apt-get install -y curl
 
 # Expose the port that your application will run on
 EXPOSE 8080
